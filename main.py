@@ -7,9 +7,9 @@ import numpy as np
 
 # Set page configuration with favicon and title
 st.set_page_config(
-    page_title="aTHEN-AI",
+    page_title="Athen-AI",
     page_icon="icons/thena.png",
-    layout="centered"  # You can set layout to "centered" or "wide"
+    layout="centered"
 )
 
 # Set your Claude API Key
@@ -61,10 +61,10 @@ def generate_claude_response(context, query):
     """Generate a response using Claude API with the provided context and query."""
     print(f"Context provided to Claude:\n{context}")  # Debugging log
     prompt = f"""
-    Given tone and voice guidelines, contexts, act as aTHEN-AI, an intelligent, conversational assistant to simplify user engagement with Thena’s DeFi ecosystem. 
+    Given tone and voice guidelines, contexts, act as Athen-AI, an intelligent, conversational assistant to simplify user engagement with Thena’s DeFi ecosystem. 
     If a question cannot be answered with the information given, answer politely that you don’t know and that the customer should contact moderators on the Discord chat. 
     In your answers, only give information that you are 100% certain of. 
-    Answer any further questions as if you are aTHEN-AI, Thena’s conversational assistant. 
+    Answer any further questions as if you are Athen-AI, Thena’s conversational assistant. 
     Tone and voice guidelines: {tone}. 
     Context: {context} 
 
@@ -82,26 +82,13 @@ def generate_claude_response(context, query):
         response_text = message.dict()['content'][0]['text']
     except Exception as e:
         print(f"Error generating Claude response: {e}")
-        response_text = "Sorry, there's an error with Thena AI."
+        response_text = "Sorry, there's an error with Athen-AI."
     
     return response_text
 
-# Preprocess the document and build the index
-def preprocess_document(file_path):
-    """Preprocess the document by chunking and embedding its content."""
-    chunks = load_and_chunk_document(file_path)
-    embedding_model = SentenceTransformer("all-mpnet-base-v2")
-    chunk_embeddings = embed_texts(chunks)
-    index = build_faiss_index(np.array(chunk_embeddings))
-    return chunks, index, embedding_model
-
-# Load the document on the backend
-document_path = "thena_docs.md"  # Change this to the path of your document
-chunks, index, embedding_model = preprocess_document(document_path)
-
 # Tone/Voice guidelines
 tone = '''
-# **Tone and Voice Guidelines for aThen-AI**
+# **Tone and Voice Guidelines for Athen-AI**
 
 ## **Tone**
 1. **Friendly and approachable**  
@@ -134,24 +121,28 @@ tone = '''
 ---
 
 ## **Example Guidelines**
-1. **Greeting**  
-   - Start with a friendly opener, e.g., "Hi there! How can I assist you today?"
-  
-2. **Acknowledging Uncertainty**  
+1. **Acknowledging Uncertainty**  
    - If unsure about the answer, respond: "I’m not certain about that, but I recommend reaching out to our moderators on Discord—they’ll be happy to assist."
 
-3. **Encouraging Engagement**  
-   - Invite further interaction if appropriate: "Does that answer your question? Let me know if you’d like more details!"
-
-4. **Clarity and Brevity**  
+2. **Clarity and Brevity**  
    - Aim for concise answers without losing essential details.  
-
-5. **Closing Interaction**  
-   - End with encouragement: "Happy to help anytime! Let me know if there’s anything else you need."
 '''
 
+# Preprocess the document and build the index
+def preprocess_document(file_path):
+    """Preprocess the document by chunking and embedding its content."""
+    chunks = load_and_chunk_document(file_path)
+    embedding_model = SentenceTransformer("all-mpnet-base-v2")
+    chunk_embeddings = embed_texts(chunks)
+    index = build_faiss_index(np.array(chunk_embeddings))
+    return chunks, index, embedding_model
+
+# Load the document on the backend
+document_path = "thena_docs.md"  # Change this to the path of your document
+chunks, index, embedding_model = preprocess_document(document_path)
+
 # Streamlit app layout
-st.title("💬 Chat with aTHEN-AI")
+st.title("💬 Chat with Athen-AI")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -163,7 +154,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Accept user input
-if prompt := st.chat_input("🤔 Ask a question:"):  # Added thinking emoji
+if prompt := st.chat_input("🤔 Ask a question:"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     
@@ -177,7 +168,7 @@ if prompt := st.chat_input("🤔 Ask a question:"):  # Added thinking emoji
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        st.markdown(response)  # This will preserve new lines
+        st.markdown(response)
 
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
