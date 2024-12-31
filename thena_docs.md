@@ -588,7 +588,7 @@ Fee Earnings: You earn fees when trades occur within your price range. The fees 
 Step 2: Prerequisites
 Before setting up a Concentrated Liquidity position, ensure the following:
 
-Thena Account: Ensure you have an account and are connected to Thena’s platform or any compatible decentralized exchange (DEX) supporting the Thena protocol.
+Ensure you are connected to Thena’s platform or any compatible decentralized exchange (DEX) supporting the Thena protocol.
 Wallet: You need a Web3 wallet (e.g., MetaMask, Trust Wallet, or WalletConnect).
 Tokens: Have the necessary tokens for the liquidity pair (e.g., ETH, USDT, DAI, etc.).
 Gas Fees: Ensure you have enough ETH (or the native blockchain token) to cover gas fees for the transactions.
