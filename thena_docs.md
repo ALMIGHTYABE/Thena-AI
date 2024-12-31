@@ -51,9 +51,6 @@ The integration of Algebra Integral allows for a granular customization of our A
 ### Liquidity Management
 Our Automated Liquidity Managers (ALM) partners offer a wide range of strategies to address specific liquidity management needs.
 
-## What is THENA?
-Watch here.
-
 ---
 
 # Page: [THE Onboarding](https://docs.thena.fi/thena/the-onboarding)
@@ -61,22 +58,66 @@ Watch here.
 ## THE Onboarding
 How to connect your Binance wallet to THENA
 
+### Setting up Binance Web3 Wallet with THENA
+
+Open Binance Mobile App:
+- Launch the Binance Mobile App on your device.
+- Navigate to “Wallet” at the bottom panel of the app.
+- Click “Web3” at the top.
+
+Create a New Wallet:
+- Click on “Create Wallet” to initiate the creation of a new wallet.
+- Follow the on-screen instructions to complete the wallet creation process.
+
+Backup Your Wallet:
+- After the wallet is created, it’s crucial to backup your wallet.
+- Follow the app’s instructions to securely backup your wallet. This will help you recover your wallet if you lose access.
+
+Navigate to Discover:
+- Go to the “Discover” section at the bottom panel of the app.
+
+Find THENA:
+- Use the search bar to search for “THENA”.
+- Select the correct app from the search results.
+
+Access THENA:
+- Click “Open dApp” to access THENA.
+
+Congratulations. You are now using THENA with Binance mobile Web3 Wallet.
+
 ---
 
 # Page: [THE Spot DEX](https://docs.thena.fi/thena/the-spot-dex)
 
 ## THE Spot DEX
-Previous: THE Onboarding  
-Next: Swap Guide
+THENA's Regular Swap engine is designed to provide users with efficient, low-cost trades across a wide range of digital assets. Harnessing the advanced routing technology of ODOS, it ensures optimal trades with minimal slippage though THENA's liquidity pools. Users can benefit from seamless, instant swaps with competitive fees, all within a highly secure and user-friendly interface.
+
+Our swap engine integrate as well ORBS Liquidity Hub, an optimization layer on top of the AMMs that taps into external liquidity sources for better price execution and lower price impact for users. If Liquidity Hub is unable to execute the trade at a better price than the Regular Swap engine, the trade will fallback to the AMM contract and execute as usual.
+
+
+THENA's UI abstracts the complexity of the liquidity hub, delivering a seamless and enhanced user experience
+Liquidity Hub sources:
+
+Onchain solver auction: Third-party solvers who compete to fill swaps using on-chain liquidity like AMM pools or their own private inventory.
+
+Decentralized orders via API: Decentralized orders are accessible using API, enabling institutional/professional traders, such as market makers, to submit bids and compete to fill swaps.
 
 ---
-
-
 
 # Page: [Swap Guide](https://docs.thena.fi/thena/the-spot-dex/swap-guide)
 
 ## Swap Guide
 How to execute your first transaction in THENA
+
+- Prerequisites: Ensure you have a Web3-enabled browser and sufficient balance in your wallet to cover both the swap amount and gas fees.
+- Navigating to Swap: Navigate to ‘Swap’ on the upper left corner of thena.fi, and click ‘Spot Trade’. Alternatively, you can follow this link: https://thena.fi/swap.
+- Choose Chain: Choose the blockchain network that you want to interact with. Make sure your wallet is set to the same network. Here we use ‘BNB Chain’ to demonstrate.
+- Connect your  Wallet: Connect your wallet by clicking the ‘Connect Wallet’ button in the upper right corner of the site. Here we use ‘Binance Web3 Wallet’. For an in depth guide on how to set up Binance Web3 Wallet, you can refer to https://academy.binance.com/en/articles/what-is-binance-web3-wallet-and-how-does-it-work
+- Select token: Choose the token pair you wish to make a swap on. As an example, we will swap from WBNB to THE.
+- Enter token swap quantity: Enter the amount of token you would like to swap.
+- Review your transaction
+- Swap and confirm: Click ‘Swap’ and confirm the transaction from your wallet.
+- After the transaction is confirmed, your swap is complete. You can now check your balance in your wallet.
 
 ---
 
@@ -87,21 +128,6 @@ How to execute your first transaction in THENA
 A limit order is a tool from CeFi in which users can buy or sell assets at a specified price or better, instead of relying on the market price at the time of execution. In a limit order, while the price is guaranteed, the order being executed is not - limit orders will be executed only if the price meets the order qualifications.
 
 THENA has integrated the dLIMIT protocol, powered by Orbs, that brings this order type to DeFi in a decentralized manner. Users can use this tool to create decentralized limit orders by following the directions below.
-
-
-### Abacus and livethe
-
-Abacus serves as a yield optimization layer within ve(3,3) protocols like Thena, aiming to enhance ecosystem performance and provide seamless integration for users. It employs a liquid wrapper token system that unlocks veTOKENs, offering additional yield while building its own vePOSITION for voting purposes. Abacus holds veNFT positions across participating decentralized exchanges (DEXes) and utilizes them to vote on pools based on carefully tuned optimization routines. These routines prioritize pools that maximize profits for all participants. 
-ABACUS DOCUMENTATION
-MEDIUM
-
-The rewards earned through veNFT votes are converted into blue-chip tokens. Subsequently, Abacus executes a Time-Weighted Average Purchase (TWAP) to either buy abcTOKENs from the market or lock DEX tokens. This process avoids slippage, prevents bot front-running, and ensures the effectiveness of each buyback. 
-MEDIUM
-
-liveTHE is one of Abacus's liquid wrappers built on top of Thena. It allows users to stake their THE tokens and receive liveTHE tokens in return, enabling them to participate in the Thena ecosystem without directly locking their tokens. This approach provides liquidity and flexibility to users while still capturing the benefits of staking. 
-TWITTER
-
-In summary, Abacus's vote optimizer enhances the efficiency and profitability of ve(3,3) protocols like Thena by strategically voting on pools and managing rewards. The liveTHE liquid wrapper offers users a flexible and liquid staking option within the Thena ecosystem.
 
 
 ### How to set-up Limit Orders?
@@ -125,6 +151,25 @@ Once your transaction is approved, your Limit order is now waiting to be execute
 ## TWAP Order
 Introduction to dTWAP
 
+TWAP (Time-weighted Average Price) is a common order type used in CeFi that breaks an order into smaller trade sizes and executes them at regular intervals. The main goal of a TWAP order is to reduce the order’s price impact. It can also be useful if a user wants to implement a dollar-cost averaging strategy (DCA) and buy a certain token on a consistent schedule (i.e. once a month).
+
+Therefore, TWAP is best used when the order size is large compared to the available liquidity, or when a user anticipates a high price volatility period with no clear up or downward trend.
+
+THENA has integrated the dTWAP protocol, powered by Orbs, that brings this order type to DeFi in a decentralized manner. Users can use this tool to create dTWAP orders by following the directions below. 
+
+How to set-up TWAP Orders ?
+- Prerequisites: Ensure you have a Web3-enabled browser and sufficient balance in your wallet to cover the order amount and gas fees.
+- Navigate to TWAP: Select ‘TWAP’ from thena.fi/swap 
+- Select Token: Choose the token pair you wish to make a swap on. As an example, we will swap from WBNB to THE.
+- Enter Order Details:
+- Enter token swap quantity: Enter the amount of token you would like to swap. Your trade size should be at least 50 USD.
+- Limit Price: By enabling this option, you can set the highest price for trades in your order. Trades will only be executed when the limit price you set is equal or lower than spot price.
+- Trade Interval: Enter the time interval between each trade execution. 
+*Note that this time includes an allowance of two minutes for bidder auction and block settlement, which cannot be predicted exactly, so the actual time may vary.
+- Max Duration: Set the total duration over which your full order should be executed. Your order may be completed earlier than this time, partially completed, or not completed at all. This can depend on factors like the price you set, the frequency of trades, and current market conditions.
+- Review Your Order:
+- Approve Order: Click ‘Approve’ and confirm the transaction from your wallet. 
+- Once your transaction is approved, your TWAP order will run in the background. You can view the order history and progress on the page. 
 ---
 
 # Page: [CROSS-CHAIN](https://docs.thena.fi/thena/the-spot-dex/cross-chain)
@@ -151,6 +196,35 @@ A self-optimizing decentralized exchange and a liquidity layer, owned by protoco
 
 ## Tokens (THE, veTHE, theNFT)
 Definition of THE token economy
+
+### $THE — BEP-20 utility token of the protocol
+$THE emissions currently have two key objectives: 
+
+Reach and maintain adequate liquidity to facilitate optimal trading conditions — $THE are emitted as farming rewards to incentivize deep liquidity
+
+Encourage decentralized governance — $THE can be used to take part in the governance for continuous development of the platform. The long term goal is to achieve true decentralization.
+
+### veTHE — ERC-721 governance token in the form of an NFT (non-fungible token)
+veTHE is the vote-escrowed version of $THE. Users can lock their $THE tokens for up to 2 years to get veTHE. The longer the lock, the higher the amount of veTHE  voting power received.
+
+
+To encourage continuous locking and sustained participation from stakeholders, the veTHE balance of users declines over time until it reaches zero at the conclusion of the initial locking period. veTHE positions can be increased, split up and resold on a secondary market. veTHE holders access the revenue generated by the platform (90% of the total trading fees + 10% of voting incentives deposited by protocols).
+
+Read more in veTHE Specs section.
+
+### theNFT
+ — ERC-721 founders' token in the form of an NFT (non-fungible token)
+theNFT is a non dilutive NFT collection that can be staked for revenue sharing. The staking pool receives 10% of total trading fees from THENA, as well as royalties from secondary sales of theNFT.
+
+Read more in theNFT Collection section.
+
+Token Addresses
+$THE 0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11
+
+veTHE 0xfBBF371C9B0B994EebFcC977CEf603F7f31c070D
+
+theNFT 0x2Af749593978CB79Ed11B9959cD82FD128BA4f8d
+
 
 ---
 
@@ -244,6 +318,14 @@ There are two parts of your rewards – rebase and the rewards that you voted fo
 ## ALPHA: THE Perpetual DEX
 Introduction
 
+ALPHA is a cutting edge “Intent-Based” perpetual DEX powered by SYMMIO and hosted by THENA that gives users access to (up to) 60x leverage trading over a range of more than 150 crypto assets. 
+
+The “Intent-Based” model connects DeFi users on-chain to third parties called “Hedgers”, that are able to provide liquidity in a trustless manner. Inspired by the Request for Quote -model (“RFQ”), Hedgers are automatically filling perpetual intents from DeFi users to create onchain and permissionless derivatives. This infrastructure pioneers the first Automated Market For Quotes engine (“AMFQ”) that seamlessly blends the strengths of order books and AMMs for an unmatched capital efficiency for both end users and professional market makers.
+
+The counterparty risk of each position minted remains isolated through symmetrical onchain agreements, and covered at any time by the collateral locked into each party’s cross-margin account, making the system fully trustless. In these bilateral agreements, the gains of a party mirrors the losses of the other one. 
+
+The ALPHA model surpasses the competition by eliminating systemic inefficiencies and dependence on oracles. It presents a platform that is not only user-friendly but also financially robust.
+
 ---
 
 # Page: [Key Concepts](https://docs.thena.fi/thena/alpha-the-perpetual-dex/key-concepts)
@@ -274,6 +356,46 @@ Since Hedgers might be willing to hedge themselves on third party entities, such
 ## Trade on ALPHA
 THE user interface walk-through
 
+1. Unrealized Profit and Loss (“UPNL”)
+It represents the potential gain or loss that you would realize if you were to close your current open position. This calculation is derived from the variance in USD value between your average entry price and the current index price.
+
+2. Open Interest
+The Open Interest (“OI”) refers to the total value of perpetual contracts that are actively held by traders. These contracts have been opened but not been closed yet, and can be used as a proxy for the overall activity on the market.
+
+
+3. Account Health
+Your account health is represented as a percentage and indicates the health of your position. When your Equity Balance reaches the level of your Maintenance Margin, your account health will deteriorate, and you will face the risk of being liquidated.
+
+AccountHealth = (EquityBalance - MaintenanceMargin ) / EquityBalance
+
+4. Maintenance Margin
+The Maintenance Margin, also known as the CVA (Collateral Value at Risk), functions as your "Security deposit." If your equity balance (comprising your account balance and unrealized profit or loss) falls to this level, you will face liquidation. Maintenance Margin is locked, non-transferable, and represents the total across all your open positions.
+
+5. Equity Balance
+Your Equity Balance is the sum of your allocated account balance and your unrealized Profit and Loss (PnL). It serves as your potential future balance. If it ever falls to the Maintenance Margin amount you've locked, you will face liquidation.
+
+Once you close your trades and settle your PnL, your account balance will match your Equity Balance minus any applicable fees.
+
+EquityBalance = AllocatedBalance + UPNL
+
+6. Allocated Balance
+The allocated Balance is the sum of funds designated by the user for a specific Margin Sub-Account. These funds can be employed to initiate margin positions or can be unallocated and transferred back to the Main Account for withdrawal following a predefined Fraud Proof window.
+
+Within this Fraud Proof window, third-party validators conduct checks to verify the accuracy and legitimacy of the balance claimed for withdrawal. If the balance aligns with the correct amount, it can then be withdrawn.
+
+7. Initial & Locked margin
+The Initial Margin contributes to your Locked Margin balance. Locked Margin represents the cumulative Margin tied up in all your active positions. Despite being part of your Equity, Locked Margin serves as a safeguard to prevent users from opening an excessive number of positions.
+
+8. Available for Orders
+Account Balance that is still available for Requests and Orders.
+
+AvailableForOrders = EquityBalance - LockedMargin - MaintenanceMargin
+
+9. Withdrawal & Proof of Time
+As SYMMIO’s architecture assumes that all transactions are final instantly, a fraud proof window has been integrated in order to address manipulation risks, including double spending. As a result, withdrawing your initial $USDT deposit needs to pass through a 12-hour fraud-proof period.
+
+The implementation of a third party providing instant withdrawal solutions is currently being studied.
+
 ---
 
 # Page: [Hedgers](https://docs.thena.fi/thena/alpha-the-perpetual-dex/hedgers)
@@ -281,11 +403,133 @@ THE user interface walk-through
 ## Hedgers
 Plug into SYMMIO and start filling intents from DeFi users
 
+SYMMIO essentially mirrors the risk on-chain, creating a unique hybrid model that balances the strengths of both centralized and decentralized systems. It serves as a marketplace facilitating third parties, known as hedgers, to execute orders. These hedgers can essentially be anyone, opening up a plethora of possibilities. They can operate on any exchange, be it Binance, Bybit, KuCoin, Bitfinex, or even run their own market-making or product structuring operations.
+
+If you are interested to become a Hedger, feel free to reach out to us through Discord, or to contact directly the SYMMIO's team.
+
+Example of a Delta Neutral Strategy
+Institutional actors such as Market Makers can leverage ALPHA to execute their operations.
+
+A simple and profitable strategy consists of filling an intent and opening the opposite position in a CEX. As such, the Hedger's PnL profile is delta neutral and its profits consist of an initial spread and a premium charged on the funding rate. In addition, cross-margining multiple positions with one user makes it possible to replicate this risk-free strategy while lowering the collateral requirement. 
+
+
+Trustlessness
+Although adding offchain operations can be extremely profitable for institutional players, SYMMIO has been designed to stay fully independent of any external actions. The counter-party risk of any symmetrical agreement is always covered onchain by the necessary amount of capital. 
+
+It is essential to keep the following points in mind:
+
+Educational Use: The above example is educational and not a comprehensive reflection of the entire SYMMIO protocol. It is structured to provide an introductory grasp of what it means to be a hedger and offers a primer on how one can undertake this role. 
+
+Avoid Misconceptions: Some readers have drawn the inference from this section that the SYMMIO system depends on Hedgers hedging themselves, leading to assumed trust dependencies on the Hedger side. However, this understanding is incorrect and could potentially lead to erroneous interpretations of the system's operation. 
+
+Top-Down Relationship: To reiterate and clarify, the relationship between a Hedger and the SYMMIO protocol is a top-down one. This means that whatever actions a hedger takes off-chain have no bearing on the on-chain events. Thus, there are no trust assumptions regarding the hedger side of things as they use off-chain systems to hedge themselves or the connection between these offchain systems and SYMMIO itself. 
+
+Independent On-Chain Contracts: The SYMMIO contracts function independently of any off-chain actions performed by a hedger. They operate exclusively within the on-chain environment, and are not influenced or impacted by any external actions. 
+
+The SYMMIO system is fully isolated: SYMMIO is fully isolated by any issues that may or may not arise from using offchain systems, centralized exchanges, trading desks or any other forms of hedging.
+
+We strongly recommend you to familiarize yourself with these points as well as the SYMMIO documentation for a better understanding of the Hedger's role and its interaction with the SYMMIO protocol. It's important to interpret the Hedger section in light of these clarifications to avoid misrepresentations of the SYMMIO protocol's actual functioning.
+
 ---
 
 # Page: [Charts by TradingView](https://docs.thena.fi/thena/alpha-the-perpetual-dex/charts-by-tradingview)
 
 ## Charts by TradingView
+
+ALPHA, the decentralized perpetual derivatives platform by THENA, proudly utilizes TradingView as our chart provider. Below is a comprehensive guide on navigating TradingView charts to enhance your trading experience.
+
+
+In this guide, we will provide a basic introduction to using TradingView charts. You will learn how to view different time frames, select various chart types, compare different tickers, use indicators, reset charts, utilize drawing tools, as well as taking a snapshot of your graph.
+
+Time Frames
+Firstly, in the top left section, you'll find the time frame selection. The time frame determines the length of time each bar or candlestick represents on the chart. For example, a 1-hour time frame means each bar represents one hour of trading activity. We'll use the BTC/USD chart as an example.
+
+
+Time frames play a crucial role in understanding market movements. Short-term time frames, such as 1-minute or 5-minute charts, are ideal for day traders looking to capitalize on quick, intra-day price fluctuations. Medium-term time frames, like the 1-hour or 4-hour charts, suit swing traders who hold positions for several days to weeks. Long-term time frames, such as daily, weekly, or monthly charts, are best for investors focused on long-term trends and holding positions for months or years. Choosing the right time frame depends on your trading style and strategy. If you are a day trader, short-term charts will be more useful, while long-term investors will benefit from longer time frames. Combining multiple time frames can provide a more comprehensive view of the market, allowing traders to see both the broader trend and finer details for better decision-making.
+
+
+You can "favorite" your favorite time frames by clicking on the star symbol, which pins them for easier selection next time. This feature allows you to quickly access the time frames you use most frequently. 
+
+Chart Types
+Beside the time frame section, you can select the chart types. Popular chart types include line charts, bar charts, and candlestick charts.
+
+
+Different chart types are used to provide various perspectives on price movements, helping traders make informed decisions. For example, a line chart, which connects closing prices over a period, is simple and easy to read, making it great for identifying overall trends. However, it lacks detail on price fluctuations within the selected time frame. In contrast, candlestick charts offer more information, showing opening, closing, high, and low prices for each period, but they can be more complex to interpret. Selecting the appropriate chart type is essential for tailoring your analysis to your trading strategy.
+
+
+To change our hollow bar chart to a line chart, we simply select the corresponding chart type in our dropdown menu.
+
+
+Asset Comparison
+Beside the chart type section, there is an option to add multiple charts on a single graph. This allows traders to compare different assets simultaneously, providing insights into their relative strength and correlations.
+
+
+For instance, we could add the ETH Chart besides the BTC chart.
+
+
+This comparison helps identify which asset is stronger or weaker. Observing relative strength can indicate bullish or bearish trends. From this chart, we could make the inference that Ethereum is showing relative weakness to Bitcoin, while at the same time being correlated to Bitcoin, and could suggest it does not offer much diversification for a risk sensitive investor. Overall, comparing symbols helps to identify relative strength, correlations, and trends, aiding in decision-making and portfolio management.
+
+Indicators
+TradingView on ALPHA offers a myriad of indicators to enhance your trading analysis. Indicators are tools that help traders interpret price movements and predict future trends. Free users of TradingView can use up to 2 indicators on the chart Some of the more popular indicators are:
+
+Moving Average (MA): This indicator smooths out price data to identify the direction of the trend over a specific period, helping traders to spot trends and reversals.
+
+
+For example, this graph uses 2 Simple Moving Averages, 50 days (blue) and 200 days (Yellow) on the daily chart.
+
+The 50-day SMA represents the short-term trend, while the 200-day SMA reflects the long-term trend.
+
+When the short-term SMA (50-day) crosses above the long-term SMA (200-day), it could suggest a bullish signal, indicating potential upward momentum. Conversely, when the short-term SMA crosses below the long-term SMA, it suggests a bearish signal, indicating potential downward momentum. This crossover strategy helps traders identify trend reversals and make informed trading decisions.
+
+You can change the time period as well as the style of the Moving Averages by hovering near the indicators and clicking the settings icon.
+
+
+Relative Strength Index (RSI): RSI measures the speed and change of price movements, indicating overbought or oversold conditions, which can signal potential reversals.
+
+
+The RSI is displayed below the main price chart. The default RSI overbought and oversold levels are typically set at 70 and 30, respectively. However, these levels can be adjusted based on the trader's preference or the specific characteristics of the asset being analyzed. The RSI helps traders identify potential reversal points. For instance, when the RSI crosses above 70, it might signal that the asset is overbought and a bearish reversal could be imminent. Conversely, when the RSI crosses below 30, it might indicate that the asset is oversold and a bullish reversal could be expected. This makes the RSI a valuable tool for timing entry and exit points in trading strategies.
+
+3. Bollinger Bands: This indicator consists of a middle band (a moving average) and two outer bands that represent standard deviations. Bollinger Bands help traders identify volatility and potential price breakouts.
+
+
+Deleting Indicators and resetting scale and resetting chart:
+To delete indicators, simply hover your mouse near the indicators section and click the “trash can” icon that appears.
+
+
+To reset the chart to the default scale, you can click at the settings button at the bottom right and then select “Reset price scale”. Alternatively, you can press ‘Alt + R’ to reset the price scale.
+
+
+To get a clean new chart, you can simply refresh the whole page.
+
+Drawing Tools
+TradingView offers the ability to draw freely on your chart or use pre-drawn tools like Fibonacci retracements. These tools, found on the left side of the chart, help traders annotate and analyze price movements by highlighting trends and identifying key support and resistance levels.
+
+On ALPHA’s TradingView charts, you can find 11 drawing tools from top to bottom.
+
+
+Some of the more popular ones include:
+
+Trend Line Tool: Trend lines enable you to highlight the direction of movement and significant price levels.
+
+
+The Trend Line tool on TradingView allows you to draw lines to mark the direction of price movements and significant levels. By selecting the tool and clicking to set start and end points, you can easily create trend lines that help identify market direction, support, and resistance levels. This tool is useful for spotting trends, potential breakout points, and reversals, enhancing your technical analysis and trading strategy. Gann and Fibonacci Tools: These tools automatically create levels based on Fibonacci sequences and Gann theory.
+
+
+The Fibonacci Retracement tool on TradingView allows traders to quickly and easily draw key levels on a chart with just a few clicks and drags. By selecting the tool and then clicking on the start and end points of a significant price move, the tool automatically plots the Fibonacci levels. These levels help traders identify potential areas of support and resistance, making it easier to anticipate possible reversal points in the price action. This automated feature saves time and enhances the precision of technical analysis.
+
+Forecasting and Measurement Tools: These tools help measure chart distances, predict price movements, and assess trading positions.
+
+
+Forecasting tools on TradingView, such as Long Position and Short Position, allow traders to simulate potential trade scenarios. By selecting these tools and setting entry, stop-loss, and target levels, traders can visualize potential profit and loss, helping them evaluate risk and reward before executing trades.
+
+
+You can easily adjust your forecasted risk, entry, profit, and stop levels by clicking on the settings icon that appears when you hover your mouse over the forecasting drawing on your chart. This feature allows for precise customization of your trade parameters.
+
+Taking a snapshot
+To take a picture of your graph, you can click the camera icon on the upper right corner of the graph, which allows you to either download the image or copy the image to your clipboard.
+
+
+For a more detailed guide on how to use TradingView charting functions, you can visit their official website.
 
 ---
 
@@ -293,6 +537,77 @@ Plug into SYMMIO and start filling intents from DeFi users
 
 ## ALPHA Trading Guide
 How to Trade on alpha.thena.fi
+
+Step 1: Connect Your Wallet and Create an Account
+Go to the ALPHA page and click the top-right corner to connect your wallet.
+
+
+Click “Create Account” in the same box.
+
+
+Enter your preferred username and click “Create Account.”
+
+
+Review the Terms & Conditions (T&C) and click “Agree.”
+
+
+Confirm the action through your wallet. Once completed, click “Ok!” to proceed.
+
+
+Step 2: Make a Deposit
+Click “Deposit” located at the bottom of the page.
+
+
+Enter the amount of USDT you want to deposit and click “Approve Collateral.”
+
+
+Approve the transaction through your wallet, then click “Deposit.”
+
+
+Confirm again via your wallet to complete the process. 
+
+You can now see your USDT balance displayed in the bottom-left corner of the page.
+
+
+Step 3: Set Up Your Position
+Select a trading pair you want to trade (e.g.,FLOKI/USDT) from the dropdown menu. 
+
+
+
+Set up your position using the following parameters:
+
+
+Order Type: Choose Limit or Market.
+
+Direction: Choose Long (expect price to rise) or Short (expect price to fall).
+
+Price and Amount: Enter the desired values.
+
+Leverage: Adjust the leverage (up to 60x) based on your risk tolerance. ALPHA supports high leverage for advanced traders looking to maximize potential gains, but remember that this also increases risk.
+
+TP/SL (Take Profit / Stop Loss): Set your target profit and stop loss to manage risk. 
+
+Once all details are correct, click the confirmation button below the settings section.
+
+
+Double-check your position details, then click the button to open your trade.
+
+
+Confirm the trade through your wallet to finalize it.
+
+Your active position will now appear in the lower section of the page.
+
+
+Step 4: Close Your Position
+In the position bar, click “Close” next to the position you want to close.
+
+
+After reviewing the details, choose “Close Position” or “Instant Close”.
+
+
+A “Close Successful” notification will appear in the top-right corner, confirming the closure.
+
+
 
 ---
 
@@ -541,13 +856,65 @@ In the future, THENA ID holders will get special early access to new features an
 ## Trading Competition Guide
 How to create a trading competition
 
+Create Trading Competitions
+Connect your wallet
+
+If you're authorized to create a trading competition, you'll find a "Create Trading Competition" button on the main competitions page.
+
+
+Step 1: Competition Details:
+
+Fill in the name of your trading competition & its description. Hit the next button once you’re done.
+
+
+Step 2: Participant Limits and Registration Timing:
+
+Set Maximum Participants: Control how many users can enter your competition. The current maximum limit is 1,000 participants.
+
+Registration Period: Choose the start and end dates and times. Remember, registration should conclude before the competition starts.
+
+Time Limitations:
+
+Minimum Registration Duration: At least 1 hour.
+
+Maximum Registration Duration: No more than 1 week.
+
+Minimum Competition Duration: At least 1 hour.
+
+Maximum Competition Duration: Up to 4 weeks (28 days).
+
+After setting these times, define the precise start and end dates and times for the trading period. Participants can trade only within this timeframe. Click 'Next' to continue.
+
+
+
+Step 3: Competition Type and Tradable Tokens:
+
+Select Competition Type: Choose between spot or perpetuals.
+
+Tradable Tokens: Select at least two tokens for trading. The more tokens you choose, the more dynamic the competition.
+
+Winning Token: This is the token used for entry fees and the prize pool. You can also add your host contribution in this token.
+
+Optional Settings:
+
+Entry Fee: Participants' fees contribute to the prize pool.
+
+Required Deposit: Set a deposit amount that participants use as their starting balance. Note: Additional deposits are not allowed once the competition begins.
+
+Host Contribution: Optionally, add to the prize pool at the competition's creation.
+
+Click 'Next' after these selections.
+
+Step 4: Prize Distribution:
+
+Set Prize Distribution: You may keep up to 25% of the total prize pool. The rest is distributed among top placements.
+
+Final Step: Preview and Create:
+
+Preview your competition setup. If satisfied, click 'Create'. Note the fixed creation fee displayed above the button. Once created, you'll be directed to your competition's page for sharing.
+
 ---
 
-# Page: [THE Roadmap](https://docs.thena.fi/thena/the-roadmap)
-
-## THE Roadmap
-
----
 
 # Page: [Security](https://docs.thena.fi/thena/security)
 
@@ -568,12 +935,6 @@ All transactions will have to go through a multisig.
 
 ---
 
-# Page: [Collaboration](https://docs.thena.fi/thena/collaboration)
-
-## Collaboration
-Join THE Ecosystem
-
----
 
 # Page: [Brand Assets](https://docs.thena.fi/thena/brand-assets)
 
@@ -667,3 +1028,18 @@ Confirm and Remove Liquidity: After reviewing your liquidity and fees earned, co
   - **Turkey**: [ThenaFi Turkey](https://t.me/ThenaFiTurkiye)
 
 ---
+
+
+### Abacus and livethe
+
+Abacus serves as a yield optimization layer within ve(3,3) protocols like Thena, aiming to enhance ecosystem performance and provide seamless integration for users. It employs a liquid wrapper token system that unlocks veTOKENs, offering additional yield while building its own vePOSITION for voting purposes. Abacus holds veNFT positions across participating decentralized exchanges (DEXes) and utilizes them to vote on pools based on carefully tuned optimization routines. These routines prioritize pools that maximize profits for all participants. 
+ABACUS DOCUMENTATION
+MEDIUM
+
+The rewards earned through veNFT votes are converted into blue-chip tokens. Subsequently, Abacus executes a Time-Weighted Average Purchase (TWAP) to either buy abcTOKENs from the market or lock DEX tokens. This process avoids slippage, prevents bot front-running, and ensures the effectiveness of each buyback. 
+MEDIUM
+
+liveTHE is one of Abacus's liquid wrappers built on top of Thena. It allows users to stake their THE tokens and receive liveTHE tokens in return, enabling them to participate in the Thena ecosystem without directly locking their tokens. This approach provides liquidity and flexibility to users while still capturing the benefits of staking. 
+TWITTER
+
+In summary, Abacus's vote optimizer enhances the efficiency and profitability of ve(3,3) protocols like Thena by strategically voting on pools and managing rewards. The liveTHE liquid wrapper offers users a flexible and liquid staking option within the Thena ecosystem.
