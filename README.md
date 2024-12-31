@@ -3,10 +3,8 @@
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
-- [Installation](#installation)
-- [Requirements](#requirements)
+- [Installation and Running Locally](#installation-and-running-locally)
 - [Code Structure](#code-structure)
-- [Running Locally](#running-locally)
 - [Usage Examples](#usage-examples)
 - [Conclusion](#conclusion)
 - [License](#license)
@@ -23,61 +21,68 @@ Athen-AI is an intelligent conversational assistant designed to enhance user eng
 - **Embedding and Retrieval**: Utilizes Sentence Transformers and FAISS for efficient text embedding and retrieval, ensuring quick access to relevant information.
 - **Claude API Integration**: Generates responses using the Claude API, ensuring high-quality and context-aware answers.
 
-## Installation
+## Installation and Running Locally
 
-To set up the Athen-AI environment, ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed on your machine. Then follow these steps:
+To set up the Athen-AI environment and run the application, follow these steps:
 
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Run the setup script to create a conda environment and install the required packages:
+1. **Clone the Repository**:
+   Open your terminal and clone the repository using the following command:
+   ```bash
+   git clone <repository-url>
+   ```
+   Replace `<repository-url>` with the actual URL of your repository.
+
+2. **Navigate to the Project Directory**:
+   Change into the project directory:
+   ```bash
+   cd <project-directory>
+   ```
+   Replace `<project-directory>` with the name of the cloned repository.
+
+3. **Set Up the Environment**:
+   Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed on your machine. Then run the setup script to create a conda environment and install the required packages:
    ```bash
    bash init_setup.sh
    ```
 
-## Setting Up Environment Variables
+4. **Setting Up Environment Variables**:
+   Before running the application, you need to set up the required environment variables, specifically your Claude API key. You can do this in two ways:
 
-Before running the application, you need to set up the required environment variables. Specifically, you need to provide your Claude API key. Here’s how to do it:
+   - **Using Streamlit Secrets**:
+     Create a file named `secrets.toml` in the `.streamlit` directory of your project (create the directory if it doesn't exist) and add the following content:
+     ```toml
+     [general]
+     CLAUDE_API_KEY = "your_claude_api_key_here"
+     ```
 
-1. **Using Streamlit Secrets**:
-   - Create a file named `secrets.toml` in the `.streamlit` directory of your project (create the directory if it doesn't exist).
-   - Add the following content to the `secrets.toml` file:
+   - **Using Environment Variables**:
+     Alternatively, set the environment variable directly in your terminal:
+     ```bash
+     export CLAUDE_API_KEY="your_claude_api_key_here"
+     ```
+     Make sure to run this command in the terminal before starting the Streamlit application.
 
-   ```toml
-   [general]
-   CLAUDE_API_KEY = "your_claude_api_key_here"
-   ```
-
-2. **Using Environment Variables**:
-   - Alternatively, you can set the environment variable directly in your terminal. Use the following command (replace `your_claude_api_key_here` with your actual API key):
-
-   ```bash
-   export CLAUDE_API_KEY="your_claude_api_key_here"
-   ```
-
-   - Make sure to run this command in the terminal before starting the Streamlit application.
-
-3. **Verify the Setup**:
-   - You can verify that the environment variable is set correctly by running:
-
+5. **Verify the Setup**:
+   You can verify that the environment variable is set correctly by running:
    ```bash
    echo $CLAUDE_API_KEY
    ```
+   This should output your Claude API key. If it does not, please check your setup.
 
-   - This should output your Claude API key. If it does not, please check your setup.
+6. **Prepare Your Document**:
+   Ensure you have the document you want to process (e.g., `thena_docs.md`) in the project directory or update the `document_path` variable in `main.py` to point to the correct file location.
 
-After setting up the environment variable, you can proceed to run the application as described in the "Running Locally" section.
+7. **Run the Streamlit Application**:
+   Start the Streamlit application by executing the following command:
+   ```bash
+   streamlit run main.py
+   ```
 
-## Requirements
+8. **Open the Application in Your Browser**:
+   After running the command, Streamlit will provide a local URL (usually `http://localhost:8501`). Open this URL in your web browser to access the Athen-AI chat interface.
 
-The following packages are required for the project:
-
-- `anthropic==0.42.0`
-- `sentence-transformers==3.3.1`
-- `faiss-cpu==1.9.0.post1`
-- `streamlit`
-- `numpy==1.26.4`
-
-These can be installed using the `requirements.txt` file.
+9. **Interact with Athen-AI**:
+   Type your questions in the chat input and interact with the assistant.
 
 ## Code Structure
 
@@ -95,45 +100,6 @@ These can be installed using the `requirements.txt` file.
 - The Streamlit app is initialized with a title and chat interface.
 - User messages are stored in the session state, allowing for a continuous conversation.
 - The assistant's responses are generated based on the most relevant document chunks retrieved from the FAISS index.
-
-## Running Locally
-
-To run the Athen-AI application locally, follow these steps:
-
-1. **Clone the Repository**:
-   Open your terminal and clone the repository using the following command:
-   ```bash
-   git clone <repository-url>
-   ```
-   Replace `<repository-url>` with the actual URL of your repository.
-
-2. **Navigate to the Project Directory**:
-   Change into the project directory:
-   ```bash
-   cd <project-directory>
-   ```
-   Replace `<project-directory>` with the name of the cloned repository.
-
-3. **Set Up the Environment**:
-   Run the setup script to create a conda environment and install the required packages:
-   ```bash
-   bash init_setup.sh
-   ```
-
-4. **Prepare Your Document**:
-   Ensure you have the document you want to process (e.g., `thena_docs.md`) in the project directory or update the `document_path` variable in `main.py` to point to the correct file location.
-
-5. **Run the Streamlit Application**:
-   Start the Streamlit application by executing the following command:
-   ```bash
-   streamlit run main.py
-   ```
-
-6. **Open the Application in Your Browser**:
-   After running the command, Streamlit will provide a local URL (usually `http://localhost:8501`). Open this URL in your web browser to access the Athen-AI chat interface.
-
-7. **Interact with Athen-AI**:
-   Type your questions in the chat input and interact with the assistant.
 
 ## Usage Examples
 
