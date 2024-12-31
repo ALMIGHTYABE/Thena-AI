@@ -28,16 +28,14 @@ To set up the Athen-AI environment and run the application, follow these steps:
 1. **Clone the Repository**:
    Open your terminal and clone the repository using the following command:
    ```bash
-   git clone <repository-url>
+   gh repo clone ALMIGHTYABE/Thena-AI
    ```
-   Replace `<repository-url>` with the actual URL of your repository.
 
 2. **Navigate to the Project Directory**:
    Change into the project directory:
    ```bash
-   cd <project-directory>
+   cd Thena-AI
    ```
-   Replace `<project-directory>` with the name of the cloned repository.
 
 3. **Set Up the Environment**:
    Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed on your machine. Then run the setup script to create a conda environment and install the required packages:
