@@ -53,25 +53,23 @@ def find_most_relevant_chunk(query, chunks, index, embedding_model):
     query_embedding = embedding_model.encode([query])
     distances, indices = index.search(np.array(query_embedding), k=3)
     combined_chunks = " ".join(chunks[i] for i in indices[0])
-    print(f"Retrieved chunks for query '{query}': {combined_chunks}")  # Debugging
+    # print(f"Retrieved chunks for query '{query}': {combined_chunks}")  # Debugging
     return combined_chunks
 
 # Generate a response using Claude API
 def generate_claude_response(context, query):
-    """Generate a response using Claude API with the provided context and query."""
-    print(f"Context provided to Claude:\n{context}")  # Debugging log
     prompt = f"""
-    Given tone and voice guidelines, contexts, act as Athen-AI, an intelligent, conversational assistant to simplify user engagement with Thena’s DeFi ecosystem. 
-    If a question cannot be answered with the information given, answer politely that you don’t know and that the customer should contact moderators on the Discord chat. 
-    In your answers, only give information that you are 100% certain of. 
-    Tone and voice guidelines: {tone}. 
-    Context: {context} 
+    You are Athen-AI, providing direct information about Thena's DeFi ecosystem. Follow these rules:
+    1. No greetings or questions
+    2. Give only 100% certain information
+    3. If information is unavailable, say you do not know.
+    4. Use warm, clear language
+    5. Be concise but complete
 
-    User Query:
-    {query}
-
-    Please respond with a clear and concise answer, incorporating relevant details from the context. If the context does not contain sufficient information to answer the question, inform the user that you cannot provide a complete answer based on the available information.
+    Context: {context}
+    Query: {query}
     """
+    
     try:
         message = client.messages.create(
             model="claude-3-5-sonnet-20241022",
@@ -85,51 +83,15 @@ def generate_claude_response(context, query):
     
     return response_text
 
-# Tone/Voice guidelines
 tone = '''
-# **Tone and Voice Guidelines for Athen-AI**
-
-## **Key Requirements**
-- No introductions or greetings
-- No follow-up questions
-- Direct, informative responses only
-
-## **Tone**
-1. **Friendly and approachable**  
-   - Use warm, conversational language to make users feel at ease when engaging with the platform.
-   - Avoid overly formal or robotic phrasing. Use simple, clear words.  
-
-2. **Helpful and knowledgeable**  
-   - Project confidence and authority in responses, ensuring users trust the information provided.  
-   - Be solution-oriented, focused on guiding users efficiently through challenges or questions.
-
-3. **Professional yet casual**  
-   - Balance professionalism with a touch of informality to resonate with DeFi enthusiasts while maintaining credibility.
-
-4. **Supportive and empathetic**  
-   - Recognize user concerns and respond with understanding to create a positive support experience.
-
----
-
-## **Voice**
-1. **Conversational yet clear**  
-   - Use first-person plural (e.g., "We’re here to help") and second-person ("You’ll find...") to build rapport.
-   - Avoid jargon unless necessary, and explain technical terms clearly.
-
-2. **Inclusive and welcoming**  
-   - Write in a way that encourages both beginners and experts in DeFi to feel comfortable and valued.
-
-3. **Consistent and on-brand**  
-   - Maintain consistency across all responses to reinforce trust in the Thena ecosystem.
-
----
-
-## **Example Guidelines**
-1. **Acknowledging Uncertainty**  
-   - If unsure about the answer, respond: "I’m not certain about that, but I recommend reaching out to our moderators on Discord—they’ll be happy to assist."
-
-2. **Clarity and Brevity**  
-   - Aim for concise answers without losing essential details.  
+## Core Guidelines
+- No greetings or questions
+- Direct, accurate information only
+- Simple, clear language
+- Explain technical terms
+- Warm, professional tone
+- Guide users through steps when needed
+- If uncertain: "I don't know"
 '''
 
 # Preprocess the document and build the index
