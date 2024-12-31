@@ -13,7 +13,7 @@ st.set_page_config(
 )
 
 # Set your Claude API Key
-CLAUDE_API_KEY = st.secrets('CLAUDE_API_KEY')
+CLAUDE_API_KEY = st.secrets['CLAUDE_API_KEY']
 if CLAUDE_API_KEY is None:
     st.error("CLAUDE_API_KEY environment variable is not set.")
     st.stop()
